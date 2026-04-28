@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ElectionGuide — Interactive Election Process Assistant</title>
+  <meta name="description" content="An interactive guide to understanding the election process, timelines, key steps, and voter information." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav id="main-nav" class="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo" id="nav-logo">
+        <div class="logo-mark">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 2v4M16 2v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8 13l2.5 2.5L16 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span class="logo-text">ElectionGuide</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#overview" class="nav-link">Overview</a></li>
+        <li><a href="#timeline" class="nav-link">Timeline</a></li>
+        <li><a href="#demo" class="nav-link">Live Demo</a></li>
+        <li><a href="#phases" class="nav-link">Phases</a></li>
+        <li><a href="#voter-guide" class="nav-link">Voter Guide</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
+        <li><a href="#assistant" class="nav-link nav-cta">Ask Assistant</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="hero" class="hero">
+    <div class="hero-bg">
+      <div class="hero-gradient-1"></div>
+      <div class="hero-gradient-2"></div>
+      <div class="hero-gradient-3"></div>
+      <div class="hero-mesh"></div>
+      <div class="hero-particles" id="hero-particles"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-dot"></span>
+        <span>Your Complete Election Resource</span>
+      </div>
+      <h1 class="hero-title">
+        Master the<br/><span class="title-accent">Election Process</span>
+      </h1>
+      <p class="hero-desc">From voter registration to inauguration — explore every step of the democratic process through interactive timelines, live simulations, and expert guidance.</p>
+      <div class="hero-ctas">
+        <a href="#demo" class="btn-hero-primary" id="hero-demo-btn">
+          <span>Try Live Demo</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#timeline" class="btn-hero-secondary" id="hero-timeline-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <span>View Timeline</span>
+        </a>
+      </div>
+      <div class="hero-metrics">
+        <div class="metric"><span class="metric-val" data-count="8">0</span><span class="metric-lbl">Key Phases</span></div>
+        <div class="metric-divider"></div>
+        <div class="metric"><span class="metric-val" data-count="50">0</span><span class="metric-lbl">Questions Covered</span></div>
+        <div class="metric-divider"></div>
+        <div class="metric"><span class="metric-val" data-count="12">0</span><span class="metric-lbl">Interactive Steps</span></div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+    </div>
+  </header>
+
+  <!-- Overview Cards -->
+  <section id="overview" class="section overview-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Overview</span>
+        <h2 class="section-title">How Democracy Works</h2>
+        <p class="section-sub">The election process is a structured journey with clearly defined phases. Here's a high-level view.</p>
+      </div>
+      <div class="overview-grid" id="overview-grid">
+        <!-- JS populated -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section id="timeline" class="section timeline-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Timeline</span>
+        <h2 class="section-title">The Election Journey</h2>
+        <p class="section-sub">Click any milestone to explore that phase in detail.</p>
+      </div>
+      <div class="timeline-container">
+        <div class="timeline-track-wrapper">
+          <div class="timeline-rail">
+            <div class="timeline-rail-fill" id="timeline-rail-fill"></div>
+          </div>
+          <div class="timeline-nodes" id="timeline-nodes"></div>
+        </div>
+        <div class="timeline-card" id="timeline-card">
+          <div class="tcard-badge" id="tcard-badge"></div>
+          <h3 class="tcard-title" id="tcard-title">Select a milestone</h3>
+          <p class="tcard-desc" id="tcard-desc">Click any point on the timeline above to see detailed information.</p>
+          <div class="tcard-tags" id="tcard-tags"></div>
+          <div class="tcard-nav">
+            <button class="tcard-btn" id="tcard-prev" aria-label="Previous">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              <span>Previous</span>
+            </button>
+            <span class="tcard-counter" id="tcard-counter">1 / 8</span>
+            <button class="tcard-btn" id="tcard-next" aria-label="Next">
+              <span>Next</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Demo / Simulator -->
+  <section id="demo" class="section demo-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Live Demo</span>
+        <h2 class="section-title">Experience the Voting Process</h2>
+        <p class="section-sub">Walk through a simulated election — from registration to casting your vote and seeing results.</p>
+      </div>
+      <div class="demo-wrapper">
+        <div class="demo-sidebar">
+          <div class="demo-steps-list" id="demo-steps-list"></div>
+        </div>
+        <div class="demo-main">
+          <div class="demo-screen" id="demo-screen">
+            <!-- JS populated -->
+          </div>
+          <div class="demo-controls">
+            <button class="demo-btn demo-btn-back" id="demo-back" disabled>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              Back
+            </button>
+            <div class="demo-progress-bar">
+              <div class="demo-progress-fill" id="demo-progress-fill"></div>
+            </div>
+            <button class="demo-btn demo-btn-next" id="demo-next">
+              Next
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Phases -->
+  <section id="phases" class="section phases-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Deep Dive</span>
+        <h2 class="section-title">Election Phases Explained</h2>
+        <p class="section-sub">Toggle between phases to understand the full picture.</p>
+      </div>
+      <div class="phases-tabs" id="phases-tabs"></div>
+      <div class="phase-panel" id="phase-panel"></div>
+    </div>
+  </section>
+
+  <!-- Voter Guide -->
+  <section id="voter-guide" class="section voter-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Voter Guide</span>
+        <h2 class="section-title">Your Voting Checklist</h2>
+        <p class="section-sub">Track your preparation progress for election day.</p>
+      </div>
+      <div class="voter-layout">
+        <div class="checklist-col" id="checklist-col"></div>
+        <div class="readiness-col">
+          <div class="readiness-card">
+            <svg class="ring-svg" viewBox="0 0 140 140">
+              <circle class="ring-bg" cx="70" cy="70" r="60" />
+              <circle class="ring-fill" id="ring-fill" cx="70" cy="70" r="60" />
+            </svg>
+            <div class="ring-label" id="ring-label">0%</div>
+            <h3 class="readiness-title">Election Readiness</h3>
+            <p class="readiness-msg" id="readiness-msg">Start checking items off your list.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section faq-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-sub">Quick answers to the most common election questions.</p>
+      </div>
+      <div class="faq-cats" id="faq-cats"></div>
+      <div class="faq-list" id="faq-list"></div>
+    </div>
+  </section>
+
+  <!-- Assistant -->
+  <section id="assistant" class="section assistant-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">AI Assistant</span>
+        <h2 class="section-title">Election Process Assistant</h2>
+        <p class="section-sub">Ask any question and get instant, detailed answers.</p>
+      </div>
+      <div class="chat-container">
+        <div class="chat-body" id="chat-body">
+          <div class="msg msg-bot">
+            <div class="msg-avi msg-avi-bot">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 2v4M16 2v4M8 13l2.5 2.5L16 10"/></svg>
+            </div>
+            <div class="msg-bubble">
+              <p>Welcome! I'm your Election Process Assistant. Ask me anything about voter registration, election timelines, voting methods, or how results are determined.</p>
+              <div class="quick-chips" id="quick-chips">
+                <button class="chip" data-q="How do I register to vote?">📝 Registration</button>
+                <button class="chip" data-q="What are the different ways to vote?">🗳️ Voting Methods</button>
+                <button class="chip" data-q="How does the Electoral College work?">🏛️ Electoral College</button>
+                <button class="chip" data-q="What are primaries and caucuses?">📊 Primaries</button>
+                <button class="chip" data-q="When is election day and what are key dates?">📅 Key Dates</button>
+                <button class="chip" data-q="What are the requirements to run for president?">🎯 Candidate Requirements</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chat-footer">
+          <input type="text" class="chat-input" id="chat-input" placeholder="Ask about elections..." autocomplete="off" />
+          <button class="chat-send" id="chat-send" aria-label="Send">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo-mark">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 2v4M16 2v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8 13l2.5 2.5L16 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span>ElectionGuide</span>
+        </div>
+        <div class="footer-nav">
+          <a href="#overview">Overview</a><a href="#timeline">Timeline</a><a href="#demo">Live Demo</a><a href="#phases">Phases</a><a href="#voter-guide">Voter Guide</a><a href="#faq">FAQ</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ElectionGuide. For educational purposes only.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
