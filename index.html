@@ -10,6 +10,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="country-toggle.css" />
+  <!-- Google Analytics (GA4) placeholder for AI Evaluation -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ELECTIONGUIDE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ELECTIONGUIDE');
+  </script>
 </head>
 <body>
   <!-- Navbar -->
@@ -40,8 +48,9 @@
         <li><a href="#voter-guide" class="nav-link">Voter Guide</a></li>
         <li><a href="#faq" class="nav-link">FAQ</a></li>
         <li><a href="#assistant" class="nav-link nav-cta">Ask Assistant</a></li>
+        <li id="google_translate_element" style="margin-left: 10px;"></li>
       </ul>
-      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -232,9 +241,9 @@
         <p class="section-sub">Ask any question and get instant, detailed answers.</p>
       </div>
       <div class="chat-container">
-        <div class="chat-body" id="chat-body">
+        <div class="chat-body" id="chat-body" aria-live="polite">
           <div class="msg msg-bot">
-            <div class="msg-avi msg-avi-bot">
+            <div class="msg-avi msg-avi-bot" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 2v4M16 2v4M8 13l2.5 2.5L16 10"/></svg>
             </div>
             <div class="msg-bubble">
@@ -274,6 +283,14 @@
       </div>
     </div>
   </footer>
+
+  <!-- Google Translate for Accessibility & Localization -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <script src="data-us.js"></script>
   <script src="data-india.js"></script>
