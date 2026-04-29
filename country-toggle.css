@@ -1,0 +1,32 @@
+/* Country Toggle */
+.country-toggle{display:flex;align-items:center;position:relative;background:var(--surf);border:1px solid var(--brd);border-radius:999px;padding:3px;gap:0;margin:0 12px}
+.country-btn{display:flex;align-items:center;gap:6px;padding:7px 16px;border-radius:999px;font-size:.8rem;font-weight:600;color:var(--t3);transition:var(--tr);z-index:2;position:relative;background:transparent;white-space:nowrap}
+.country-btn.active{color:var(--t1)}
+.country-flag{font-size:1.1rem;line-height:1}
+.country-name{font-family:var(--ff)}
+.toggle-slider{position:absolute;top:3px;left:3px;height:calc(100% - 6px);width:calc(50% - 3px);border-radius:999px;background:linear-gradient(135deg,var(--ac),#7c3aed);transition:transform .35s cubic-bezier(.4,0,.2,1);z-index:1;pointer-events:none}
+.toggle-slider.right{transform:translateX(100%)}
+@media(max-width:768px){.country-toggle{margin:0 0 12px;align-self:center;order:-1}.country-name{display:none}.country-btn{padding:7px 12px}}
+
+/* India Theme */
+body.india-mode{--ac:#e65100;--ac2:#ff8a65;--acg:rgba(230,81,0,.25)}
+body.india-mode .logo-mark{background:linear-gradient(135deg,#ff6f00,#2e7d32)}
+body.india-mode .btn-hero-primary{background:linear-gradient(135deg,#e65100,#2e7d32)}
+body.india-mode .title-accent{background:linear-gradient(135deg,#ff8a65,#66bb6a,#42a5f5);-webkit-background-clip:text;background-clip:text}
+body.india-mode .toggle-slider{background:linear-gradient(135deg,#ff6f00,#2e7d32)}
+body.india-mode .nav-cta{background:var(--ac)!important}
+body.india-mode .ph-num{background:linear-gradient(135deg,#e65100,#2e7d32)}
+body.india-mode .demo-btn-next{background:linear-gradient(135deg,#e65100,#2e7d32)}
+body.india-mode .chat-send{background:linear-gradient(135deg,#e65100,#2e7d32)}
+body.india-mode .msg-avi-bot{background:linear-gradient(135deg,#e65100,#2e7d32)}
+body.india-mode .msg-user .msg-bubble{background:linear-gradient(135deg,#e65100,#2e7d32)}
+body.india-mode .hero-gradient-1{background:#ff6f00}
+body.india-mode .hero-gradient-2{background:#2e7d32}
+body.india-mode .hero-gradient-3{background:#42a5f5}
+body.india-mode .timeline-rail-fill{background:linear-gradient(90deg,#e65100,#2e7d32)}
+body.india-mode .demo-progress-fill{background:linear-gradient(90deg,#e65100,#2e7d32)}
+body.india-mode .section-label{background:rgba(230,81,0,.12)}
+
+/* Section fade for country switch */
+.section-fade{animation:secFade .35s ease-out}
+@keyframes secFade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}

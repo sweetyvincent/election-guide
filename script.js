@@ -1,27 +1,342 @@
-﻿const TL=[{id:1,label:"Announce\nCandidacy",icon:"\u{1F4E2}",title:"Candidacy Announcement",desc:"Candidates formally declare their intention to run for office. They file paperwork with the FEC, form campaign committees, and begin fundraising. This phase often starts 1-2 years before election day for presidential races.",meta:["12-24 months before","FEC Filing Required"]},{id:2,label:"Primary\nCampaign",icon:"\u{1F4E3}",title:"Primary Campaign Season",desc:"Candidates campaign across states, participate in debates, attend rallies, and build grassroots support. Media coverage intensifies as voters evaluate each candidate's platform and policies.",meta:["6-18 months before","Debates & Rallies"]},{id:3,label:"Primaries &\nCaucuses",icon:"\u{1F5F3}",title:"Primaries & Caucuses",desc:"State-level elections where party members vote for their preferred candidate. Primaries use secret ballots; caucuses involve public gatherings and discussions. Delegates are awarded based on results.",meta:["Jan - June of election year","State by State"]},{id:4,label:"National\nConventions",icon:"\u{1F3DB}",title:"National Conventions",desc:"Each major party holds a multi-day convention to officially nominate their candidate. Delegates cast votes, the party platform is adopted, and the VP pick is announced.",meta:["July - August","Delegate Votes"]},{id:5,label:"General\nCampaign",icon:"\u{1F399}",title:"General Election Campaign",desc:"The nominated candidates campaign head-to-head. Presidential debates are held, advertising intensifies, and candidates focus on swing states.",meta:["Sept - November","Presidential Debates"]},{id:6,label:"Election\nDay",icon:"\u{1F1FA}\u{1F1F8}",title:"Election Day",desc:"Voters cast ballots at polling places or through mail-in/absentee voting. Results begin coming in as polls close across time zones.",meta:["First Tues after Nov 1","Polls Open Nationwide"]},{id:7,label:"Electoral\nCollege",icon:"\u{2696}",title:"Electoral College Vote",desc:"Electors in each state cast votes based on popular vote results. A candidate needs 270 out of 538 electoral votes to win. Congress certifies results in January.",meta:["December","270 Votes to Win"]},{id:8,label:"Inauguration",icon:"\u{1F389}",title:"Inauguration Day",desc:"The President-elect is sworn into office on January 20th at the U.S. Capitol, followed by an inaugural address and peaceful transfer of power.",meta:["January 20","Transfer of Power"]}];
-const OV=[{icon:"\u{1F4CB}",title:"Voter Registration",desc:"The first step to participating. Register through your state's website, by mail, or in person."},{icon:"\u{1F4CA}",title:"Primary Elections",desc:"Each party narrows the field. Voters select their preferred candidate through primaries or caucuses."},{icon:"\u{1F3DB}",title:"National Conventions",desc:"Parties officially nominate candidates and adopt platforms at national conventions."},{icon:"\u{1F5F3}",title:"General Election",desc:"The final contest. Voters choose between party nominees on election day."},{icon:"\u{2696}",title:"Electoral College",desc:"538 electors formally elect the President. 270 votes needed to win."},{icon:"\u{1F389}",title:"Inauguration",desc:"The President-elect takes the oath of office on January 20th."}];
-const PH=[{tab:"Registration",icon:"\u{1F4DD}",title:"Voter Registration",sub:"The foundation of democratic participation",steps:[{t:"Check Eligibility",d:"Must be a U.S. citizen, meet state residency requirements, and be 18+ by election day."},{t:"Choose Registration Method",d:"Register online, by mail using the National Voter Registration Form, or in person at your local election office/DMV."},{t:"Provide Required Info",d:"Full legal name, address, date of birth, and state ID or last four SSN digits."},{t:"Submit Before Deadline",d:"Most states require registration 15-30 days before election. Some offer same-day registration."}]},{tab:"Campaigning",icon:"\u{1F4E3}",title:"Campaign Season",sub:"How candidates make their case",steps:[{t:"Building a Team",d:"Campaign manager, communications director, policy advisors, and field organizers across key states."},{t:"Fundraising",d:"Individual donations, events, PACs, and online contributions. FEC regulates limits."},{t:"Debates & Forums",d:"Organized debates where candidates present positions and challenge opponents on policy."},{t:"Voter Outreach",d:"Canvassing, phone banking, digital ads, rallies, and town halls to reach voters."}]},{tab:"Primaries",icon:"\u{1F5F3}",title:"Primaries & Caucuses",sub:"Narrowing the field within each party",steps:[{t:"Open vs Closed",d:"Closed: only registered party members vote. Open: any registered voter can participate."},{t:"Caucus Process",d:"Local gatherings where voters publicly show support with multiple rounds possible."},{t:"Delegate Allocation",d:"Democrats use proportional; Republicans vary by state (winner-take-all or proportional)."},{t:"Super Tuesday",d:"Biggest primary day with 10+ states voting simultaneously. Can make or break campaigns."}]},{tab:"Conventions",icon:"\u{1F3DB}",title:"National Conventions",sub:"Officially nominating party candidates",steps:[{t:"Delegate Roll Call",d:"State delegations announce counts. Majority threshold wins nomination."},{t:"VP Selection",d:"Nominee selects running mate to balance the ticket and energize the base."},{t:"Platform Adoption",d:"Official platform outlining positions on economy, healthcare, education, foreign policy."},{t:"Acceptance Speech",d:"Keynote speech to rally the party and kick off the general election."}]},{tab:"General",icon:"\u{1F399}",title:"General Election",sub:"The final contest for presidency",steps:[{t:"Swing State Strategy",d:"Resources concentrated in battleground states where outcomes are uncertain."},{t:"Presidential Debates",d:"Three presidential + one VP debate. Commission sets rules and format."},{t:"Early & Absentee Voting",d:"Many states allow voting before election day through early in-person or mail-in ballots."},{t:"GOTV Operations",d:"Massive final push - calling voters, rides to polls, data-driven targeting."}]},{tab:"Results",icon:"\u{1F4CA}",title:"Counting & Results",sub:"From votes to certified outcomes",steps:[{t:"Vote Counting",d:"Officials count using optical scanners, hand counts, or electronic systems."},{t:"Media Projections",d:"Networks use exit polls and partial results to project winners on election night."},{t:"Canvassing & Certification",d:"Results audited and verified by county/state boards over days to weeks."},{t:"Recounts & Challenges",d:"Close margins trigger automatic recounts. Candidates can file legal challenges."}]}];
-const CK=[{t:"Check Registration Status",d:"Verify you're registered at your current address."},{t:"Know Your Polling Place",d:"Find location, hours, and accessibility info."},{t:"Review the Ballot",d:"Research candidates and ballot measures beforehand."},{t:"Bring Valid ID",d:"Check state ID requirements and prepare documents."},{t:"Plan Your Vote",d:"Decide: in person, early, or by mail."},{t:"Request Absentee Ballot",d:"If voting by mail, request and return on time."},{t:"Know Key Deadlines",d:"Registration, early voting, and ballot return dates."},{t:"Spread the Word",d:"Encourage family and friends to participate."}];
-const FAQ=[{q:"How do I register to vote?",a:"Register online at your state's election website or vote.gov, by mail using the National Voter Registration Form, or in person at your local election office or DMV.",c:"registration"},{q:"What do I need to bring to vote?",a:"Requirements vary by state. Many require photo ID. Some accept non-photo ID or affidavits. Check your state's specific requirements.",c:"voting"},{q:"What is the Electoral College?",a:"538 electors who formally elect the President. Each state gets electors equal to its Congressional representation. 270 needed to win. Most states use winner-take-all.",c:"process"},{q:"When are results official?",a:"Election night results are projections. Official results are certified over following weeks. Electoral College votes in December, Congress certifies in January.",c:"results"},{q:"Can I vote if I moved recently?",a:"Update your registration to your new address. Within same state: update online. New state: register there. Some states offer same-day registration.",c:"registration"},{q:"What is early voting?",a:"Casting your ballot in person before election day. Dates vary by state, typically 10-45 days before. Reduces crowds and gives flexibility.",c:"voting"},{q:"How do primaries and caucuses differ?",a:"Primaries: state-run elections with secret ballots. Caucuses: party-organized meetings with public discussion and support, sometimes multiple rounds.",c:"process"},{q:"What if no one gets 270 electoral votes?",a:"The House elects the President (one vote per state delegation) and Senate elects the VP. Happened once in 1824.",c:"results"},{q:"Can I vote by mail?",a:"All states offer some form. Some conduct elections entirely by mail. Others require an excuse. Check your state's rules and deadlines.",c:"voting"},{q:"What are swing states?",a:"States where neither party has a clear advantage. Both candidates campaign heavily as these electoral votes could decide the election.",c:"process"}];
-const DEMO=[{title:"Register to Vote",desc:"First, let's get you registered. Fill in your basic information to begin the registration process.",content:'<div class="demo-visual"><div class="demo-form-group"><label>Full Legal Name</label><input type="text" placeholder="e.g. Jane Smith" id="demo-name"></div><div class="demo-form-group"><label>Date of Birth</label><input type="date" id="demo-dob"></div><div class="demo-form-group"><label>State of Residence</label><select id="demo-state"><option>Select your state...</option><option>California</option><option>Texas</option><option>Florida</option><option>New York</option><option>Pennsylvania</option><option>Ohio</option></select></div></div>'},{title:"Verify Eligibility",desc:"We'll check your eligibility based on the information provided.",content:'<div class="demo-visual"><div style="text-align:center;padding:20px"><div style="font-size:2.5rem;margin-bottom:12px">\u2705</div><h4 style="margin-bottom:8px">Eligibility Confirmed!</h4><p style="color:var(--t2);font-size:.88rem">Based on your information, you meet all requirements:</p><div style="text-align:left;margin-top:16px;display:grid;gap:8px"><div class="demo-option selected">\u2714 U.S. Citizen - Verified</div><div class="demo-option selected">\u2714 Age 18+ - Verified</div><div class="demo-option selected">\u2714 State Residency - Verified</div></div></div></div>'},{title:"Choose Voting Method",desc:"Select how you'd like to cast your vote. Each method has its own timeline and requirements.",content:'<div class="demo-visual"><div class="demo-option" onclick="this.classList.toggle(\'selected\')">\u{1F3DB} <strong>In-Person on Election Day</strong><br><span style="color:var(--t2);font-size:.82rem">Vote at your assigned polling place on election day</span></div><div class="demo-option" onclick="this.classList.toggle(\'selected\')">\u{1F4C5} <strong>Early In-Person Voting</strong><br><span style="color:var(--t2);font-size:.82rem">Vote before election day at designated locations</span></div><div class="demo-option" onclick="this.classList.toggle(\'selected\')">\u{1F4EC} <strong>Mail-In / Absentee Ballot</strong><br><span style="color:var(--t2);font-size:.82rem">Request a ballot and vote from home</span></div></div>'},{title:"Review Your Ballot",desc:"Before voting, review the candidates and ballot measures you'll be deciding on.",content:'<div class="demo-visual"><h4 style="margin-bottom:14px;font-size:.95rem">\u{1F4CB} Sample Ballot Preview</h4><div class="demo-option"><strong>President</strong><br><span style="color:var(--t2);font-size:.82rem">Candidate A (Party 1) vs Candidate B (Party 2)</span></div><div class="demo-option"><strong>U.S. Senate</strong><br><span style="color:var(--t2);font-size:.82rem">Candidate C vs Candidate D</span></div><div class="demo-option"><strong>Proposition 1</strong><br><span style="color:var(--t2);font-size:.82rem">Infrastructure funding measure - Yes/No</span></div><div class="demo-option"><strong>Local Judge</strong><br><span style="color:var(--t2);font-size:.82rem">Retain Judge Smith? - Yes/No</span></div></div>'},{title:"Cast Your Vote",desc:"It's election day! Here's what the voting process looks like.",content:'<div class="demo-visual" style="text-align:center;padding:24px"><div style="font-size:3rem;margin-bottom:12px">\u{1F5F3}</div><h4 style="margin-bottom:12px">Casting Your Ballot</h4><div style="text-align:left;display:grid;gap:10px"><div class="demo-option selected">\u2714 Step 1: Check in with poll workers</div><div class="demo-option selected">\u2714 Step 2: Receive your ballot</div><div class="demo-option selected">\u2714 Step 3: Mark your choices privately</div><div class="demo-option selected">\u2714 Step 4: Submit your ballot</div><div class="demo-option selected">\u2714 Step 5: Get your I Voted sticker!</div></div></div>'},{title:"See the Results",desc:"After polls close, votes are counted and results come in. Here's a simulated result.",content:'<div class="demo-result"><div class="result-icon">\u{1F4CA}</div><h4>Simulated Election Results</h4><p style="color:var(--t2);font-size:.85rem;margin-bottom:16px">Results based on our simulation</p><div style="text-align:left"><p style="font-size:.88rem;margin-bottom:6px"><strong>Candidate A</strong> - 52.3%</p><div class="demo-bar"><div class="demo-bar-fill" style="width:52.3%;background:var(--ac)"></div></div><p style="font-size:.88rem;margin-bottom:6px;margin-top:12px"><strong>Candidate B</strong> - 47.7%</p><div class="demo-bar"><div class="demo-bar-fill" style="width:47.7%;background:var(--cyn)"></div></div><p style="text-align:center;margin-top:20px;color:var(--grn);font-weight:600">\u2705 Candidate A wins with 306 Electoral Votes</p></div></div>'}];
-const KB={register:"To register to vote:\n\n1. **Online**: Visit your state's election website or vote.gov\n2. **By Mail**: Download the National Voter Registration Form\n3. **In Person**: Visit your local election office or DMV\n\nYou'll need: full legal name, address, date of birth, and state ID or last 4 SSN digits. Most states require registration 15-30 days before the election.",electoral:"The **Electoral College** has 538 electors:\n\n\u2022 Each state gets electors equal to Senators (2) + Representatives\n\u2022 DC gets 3 electors (23rd Amendment)\n\u2022 Need **270 electoral votes** to win\n\u2022 Most states use **winner-take-all**\n\u2022 Maine and Nebraska use congressional district method\n\nElectors meet in December to cast official votes.",methods:"Ways to cast your vote:\n\n\u{1F3DB} **In-Person**: Go to your assigned polling place on election day\n\u{1F4EC} **Mail-In/Absentee**: Request a ballot by mail and return before deadline\n\u{1F4C5} **Early Voting**: Vote in person before election day (10-45 days before)\n\n Check your state's options at vote.gov!",primaries:"**Primaries**: State-run elections with secret ballots\n\u2022 Open: any voter can participate\n\u2022 Closed: only registered party members\n\n**Caucuses**: Party-organized local meetings\n\u2022 Public discussion and support\n\u2022 Multiple rounds possible\n\n**Super Tuesday**: Biggest primary day with 10+ states voting simultaneously.",dates:"**Key Election Dates:**\n\n\u{1F4C5} For 2028: Election Day is **November 7, 2028**\n\u23F0 Polls typically open 6-7 AM, close 7-8 PM\n\u{1F4CD} Vote at your assigned polling place\n\u{1FAA5} Bring required identification\n\nExpect: check in, receive ballot, mark choices, submit, get your sticker!",candidate:"To run for **President**:\n\u2022 Natural-born U.S. citizen\n\u2022 At least 35 years old\n\u2022 U.S. resident for 14+ years\n\n**Senate**: citizen 9+ years, 30+ years old\n**House**: citizen 7+ years, 25+ years old\n\nMust file with FEC and comply with campaign finance laws.",results:"How **results** are determined:\n\n1. Election Night: Media projects winners (unofficial)\n2. Vote Counting: Days/weeks for all ballots\n3. Canvassing: County boards audit results\n4. Certification: State officials certify\n5. Electoral College: Electors vote in December\n6. Congressional Certification: January 6\n7. Inauguration: January 20",fallback:"I can help with:\n\n\u{1F4DD} **Voter Registration** \u2014 How to register\n\u{1F5F3} **Voting Methods** \u2014 In-person, mail-in, early\n\u{1F4CA} **Primaries & Caucuses** \u2014 How parties choose nominees\n\u{1F3DB} **Electoral College** \u2014 How the system works\n\u{1F4C5} **Key Dates** \u2014 Important timeline dates\n\u{1F3AF} **Candidate Requirements** \u2014 Who can run\n\u{1F4C8} **Results** \u2014 How votes are counted\n\nTry asking about any of these topics!"};
-document.addEventListener('DOMContentLoaded',()=>{initNav();initCounters();initOverview();initTimeline();initDemo();initPhases();initChecklist();initFAQ();initChat();initReveal()});
-function initNav(){const n=document.getElementById('main-nav'),t=document.getElementById('mobile-toggle'),l=document.getElementById('nav-links');window.addEventListener('scroll',()=>n.classList.toggle('scrolled',scrollY>50));t.addEventListener('click',()=>l.classList.toggle('open'));l.querySelectorAll('.nav-link').forEach(a=>{a.addEventListener('click',()=>l.classList.remove('open'))});const secs=document.querySelectorAll('.section');const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const id=e.target.id;l.querySelectorAll('.nav-link').forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+id)})}})},{threshold:.3});secs.forEach(s=>obs.observe(s))}
-function initCounters(){const els=document.querySelectorAll('.metric-val');const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const el=e.target,target=+el.dataset.count,start=performance.now();(function up(now){const p=Math.min((now-start)/1200,1);el.textContent=Math.floor((1-Math.pow(1-p,3))*target);if(p<1)requestAnimationFrame(up);else el.textContent=target})(start);obs.unobserve(el)}})},{threshold:.5});els.forEach(e=>obs.observe(e))}
-function initOverview(){const g=document.getElementById('overview-grid');OV.forEach((c,i)=>{const d=document.createElement('div');d.className='ov-card reveal';d.style.animationDelay=i*.1+'s';d.innerHTML='<span class="ov-icon">'+c.icon+'</span><h3>'+c.title+'</h3><p>'+c.desc+'</p>';g.appendChild(d)})}
-let tlIdx=0;
-function initTimeline(){const c=document.getElementById('timeline-nodes');TL.forEach((t,i)=>{const d=document.createElement('div');d.className='t-node';d.innerHTML='<div class="t-dot"></div><span class="t-lbl">'+t.label+'</span>';d.addEventListener('click',()=>selTL(i));c.appendChild(d)});document.getElementById('tcard-prev').addEventListener('click',()=>selTL(tlIdx-1));document.getElementById('tcard-next').addEventListener('click',()=>selTL(tlIdx+1));selTL(0)}
-function selTL(i){if(i<0||i>=TL.length)return;tlIdx=i;const d=TL[i];document.querySelectorAll('.t-node').forEach((n,j)=>n.classList.toggle('active',j===i));document.getElementById('timeline-rail-fill').style.width=(i/(TL.length-1))*100+'%';const card=document.getElementById('timeline-card');card.classList.add('active');document.getElementById('tcard-badge').textContent=d.icon;document.getElementById('tcard-title').textContent=d.title;document.getElementById('tcard-desc').textContent=d.desc;document.getElementById('tcard-tags').innerHTML=d.meta.map(m=>'<span>'+m+'</span>').join('');document.getElementById('tcard-counter').textContent=(i+1)+' / '+TL.length;document.getElementById('tcard-prev').disabled=i===0;document.getElementById('tcard-next').disabled=i===TL.length-1}
-let demoIdx=0;
-function initDemo(){const sl=document.getElementById('demo-steps-list');DEMO.forEach((s,i)=>{const d=document.createElement('div');d.className='demo-step-item'+(i===0?' active':'');d.innerHTML='<div class="demo-step-num">'+(i+1)+'</div><span>'+s.title+'</span>';d.addEventListener('click',()=>goDemo(i));sl.appendChild(d)});document.getElementById('demo-back').addEventListener('click',()=>goDemo(demoIdx-1));document.getElementById('demo-next').addEventListener('click',()=>goDemo(demoIdx+1));renderDemo(0)}
-function goDemo(i){if(i<0||i>=DEMO.length)return;demoIdx=i;document.querySelectorAll('.demo-step-item').forEach((el,j)=>{el.classList.remove('active','done');if(j<i)el.classList.add('done');if(j===i)el.classList.add('active')});document.getElementById('demo-back').disabled=i===0;document.getElementById('demo-next').disabled=i===DEMO.length-1;document.getElementById('demo-progress-fill').style.width=(i/(DEMO.length-1))*100+'%';renderDemo(i)}
-function renderDemo(i){const s=DEMO[i],el=document.getElementById('demo-screen');el.style.opacity=0;setTimeout(()=>{el.innerHTML='<h3>'+s.title+'</h3><p>'+s.desc+'</p>'+s.content;el.style.opacity=1},150)}
-function initPhases(){const nav=document.getElementById('phases-tabs');PH.forEach((p,i)=>{const b=document.createElement('button');b.className='ph-tab'+(i===0?' active':'');b.textContent=p.tab;b.addEventListener('click',()=>{document.querySelectorAll('.ph-tab').forEach((t,j)=>t.classList.toggle('active',j===i));renderPhase(i)});nav.appendChild(b)});renderPhase(0)}
-function renderPhase(i){const p=PH[i],el=document.getElementById('phase-panel');el.innerHTML='<div class="ph-header"><span class="ph-icon">'+p.icon+'</span><div class="ph-header-text"><h3>'+p.title+'</h3><p>'+p.sub+'</p></div></div><div class="ph-body"><div class="ph-steps">'+p.steps.map((s,j)=>'<div class="ph-step" style="animation:fu .4s ease-out '+j*.1+'s both"><div class="ph-num">'+(j+1)+'</div><div class="ph-text"><h4>'+s.t+'</h4><p>'+s.d+'</p></div></div>').join('')+'</div></div>'}
-function initChecklist(){const g=document.getElementById('checklist-col');const saved=JSON.parse(localStorage.getItem('ckElection')||'[]');CK.forEach((c,i)=>{const d=document.createElement('div');d.className='ck-item'+(saved.includes(i)?' checked':'');d.dataset.i=i;d.innerHTML='<div class="ck-box"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div><div class="ck-text"><h4>'+c.t+'</h4><p>'+c.d+'</p></div>';d.addEventListener('click',()=>{d.classList.toggle('checked');const s=[...document.querySelectorAll('.ck-item.checked')].map(e=>+e.dataset.i);localStorage.setItem('ckElection',JSON.stringify(s));updProgress()});g.appendChild(d)});updProgress()}
-function updProgress(){const t=CK.length,c=document.querySelectorAll('.ck-item.checked').length,p=Math.round(c/t*100),circ=2*Math.PI*60,off=circ-(p/100)*circ;const f=document.getElementById('ring-fill');f.style.strokeDashoffset=off;f.style.stroke=p===100?'var(--grn)':p>=50?'var(--ac)':'var(--amb)';document.getElementById('ring-label').textContent=p+'%';const msgs=["Start checking items off your list.","Great start! Keep going.","Halfway there! Good progress.","Almost ready! Just a few more.","You're fully prepared!"];document.getElementById('readiness-msg').textContent=msgs[p===100?4:p>=75?3:p>=50?2:p>0?1:0]}
-function initFAQ(){const cats=document.getElementById('faq-cats');const list=document.getElementById('faq-list');['all','registration','voting','process','results'].forEach(c=>{const b=document.createElement('button');b.className='fq-btn'+(c==='all'?' active':'');b.textContent=c[0].toUpperCase()+c.slice(1);b.addEventListener('click',()=>{document.querySelectorAll('.fq-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.faq-item').forEach(x=>x.style.display=(c==='all'||x.dataset.c===c)?'':'none')});cats.appendChild(b)});FAQ.forEach(f=>{const d=document.createElement('div');d.className='faq-item';d.dataset.c=f.c;d.innerHTML='<button class="faq-q"><span>'+f.q+'</span><svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><div class="faq-a-inner">'+f.a+'</div></div>';d.querySelector('.faq-q').addEventListener('click',()=>d.classList.toggle('open'));list.appendChild(d)})}
-function initChat(){const inp=document.getElementById('chat-input'),btn=document.getElementById('chat-send'),body=document.getElementById('chat-body');function send(){const t=inp.value.trim();if(!t)return;addMsg(t,'user');inp.value='';const typ=document.createElement('div');typ.className='msg msg-bot typing-m';typ.innerHTML='<div class="msg-avi msg-avi-bot"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 13l2.5 2.5L16 10"/></svg></div><div class="msg-bubble"><div class="typing-ind"><span></span><span></span><span></span></div></div>';body.appendChild(typ);body.scrollTop=body.scrollHeight;setTimeout(()=>{typ.remove();addMsg(getAns(t),'bot')},700+Math.random()*500)}btn.addEventListener('click',send);inp.addEventListener('keydown',e=>{if(e.key==='Enter')send()});document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{inp.value=c.dataset.q;send()}))}
-function addMsg(t,type){const body=document.getElementById('chat-body'),d=document.createElement('div');d.className='msg msg-'+type;const avi=type==='bot'?'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 13l2.5 2.5L16 10"/></svg>':'\u{1F464}';d.innerHTML='<div class="msg-avi'+(type==='bot'?' msg-avi-bot':'')+'">'+avi+'</div><div class="msg-bubble"><p>'+t.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong></strong>')+'</p></div>';body.appendChild(d);body.scrollTop=body.scrollHeight}
-function getAns(q){const l=q.toLowerCase();if(l.match(/register|registration|sign up/))return KB.register;if(l.match(/electoral college|270|elector/))return KB.electoral;if(l.match(/ways to vote|voting method|how to vote|mail|absentee/))return KB.methods;if(l.match(/primary|caucus|primaries/))return KB.primaries;if(l.match(/election day|when is|key date|date/))return KB.dates;if(l.match(/requirement|run for|qualify|candidate/))return KB.candidate;if(l.match(/result|count|winner|certif/))return KB.results;return KB.fallback}
-function initReveal(){const els=document.querySelectorAll('.section-head,.timeline-card,.phase-panel,.checklist-col,.readiness-card,.faq-list,.chat-container,.ov-card,.demo-wrapper');els.forEach(e=>e.classList.add('reveal'));const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});els.forEach(e=>obs.observe(e))}
+// Country data map
+const DATA = { us: DATA_US, in: DATA_IN };
+let currentCountry = localStorage.getItem('egCountry') || 'us';
+let tlIdx = 0, demoIdx = 0;
+
+function D() { return DATA[currentCountry]; }
+
+document.addEventListener('DOMContentLoaded', () => {
+  initCountryToggle();
+  initNav();
+  initCounters();
+  renderAll();
+  initReveal();
+});
+
+/* ---- Country Toggle ---- */
+function initCountryToggle() {
+  const btnUS = document.getElementById('btn-us');
+  const btnIN = document.getElementById('btn-in');
+  const slider = document.getElementById('toggle-slider');
+
+  function applyCountry(c, animate) {
+    currentCountry = c;
+    localStorage.setItem('egCountry', c);
+    btnUS.classList.toggle('active', c === 'us');
+    btnIN.classList.toggle('active', c === 'in');
+    slider.classList.toggle('right', c === 'in');
+    document.body.classList.toggle('india-mode', c === 'in');
+    // Update hero desc
+    const hd = document.getElementById('hero-desc');
+    if (hd) hd.textContent = D().heroDesc;
+    if (animate) {
+      renderAll();
+      // Add fade animation to sections
+      document.querySelectorAll('.section').forEach(s => {
+        s.classList.add('section-fade');
+        s.addEventListener('animationend', () => s.classList.remove('section-fade'), { once: true });
+      });
+    }
+  }
+
+  btnUS.addEventListener('click', () => applyCountry('us', true));
+  btnIN.addEventListener('click', () => applyCountry('in', true));
+  // Apply saved country on load
+  applyCountry(currentCountry, false);
+}
+
+/* ---- Render All Sections ---- */
+function renderAll() {
+  tlIdx = 0; demoIdx = 0;
+  renderOverview();
+  renderTimeline();
+  renderDemo();
+  renderPhases();
+  renderChecklist();
+  renderFAQ();
+  renderChips();
+}
+
+/* ---- Navbar ---- */
+function initNav() {
+  const n = document.getElementById('main-nav');
+  const t = document.getElementById('mobile-toggle');
+  const l = document.getElementById('nav-links');
+  window.addEventListener('scroll', () => n.classList.toggle('scrolled', scrollY > 50));
+  t.addEventListener('click', () => l.classList.toggle('open'));
+  l.querySelectorAll('.nav-link').forEach(a => a.addEventListener('click', () => l.classList.remove('open')));
+  const secs = document.querySelectorAll('.section');
+  const obs = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        l.querySelectorAll('.nav-link').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+      }
+    });
+  }, { threshold: .3 });
+  secs.forEach(s => obs.observe(s));
+}
+
+/* ---- Counters ---- */
+function initCounters() {
+  const els = document.querySelectorAll('.metric-val');
+  const obs = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target, target = +el.dataset.count, start = performance.now();
+        (function up(now) {
+          const p = Math.min((now - start) / 1200, 1);
+          el.textContent = Math.floor((1 - Math.pow(1 - p, 3)) * target);
+          if (p < 1) requestAnimationFrame(up); else el.textContent = target;
+        })(start);
+        obs.unobserve(el);
+      }
+    });
+  }, { threshold: .5 });
+  els.forEach(e => obs.observe(e));
+}
+
+/* ---- Overview ---- */
+function renderOverview() {
+  const g = document.getElementById('overview-grid');
+  g.innerHTML = '';
+  D().OV.forEach((c, i) => {
+    const d = document.createElement('div');
+    d.className = 'ov-card reveal visible';
+    d.innerHTML = '<span class="ov-icon">' + c.icon + '</span><h3>' + c.title + '</h3><p>' + c.desc + '</p>';
+    g.appendChild(d);
+  });
+}
+
+/* ---- Timeline ---- */
+function renderTimeline() {
+  const c = document.getElementById('timeline-nodes');
+  c.innerHTML = '';
+  D().TL.forEach((t, i) => {
+    const d = document.createElement('div');
+    d.className = 't-node';
+    d.innerHTML = '<div class="t-dot"></div><span class="t-lbl">' + t.label + '</span>';
+    d.addEventListener('click', () => selTL(i));
+    c.appendChild(d);
+  });
+  document.getElementById('tcard-prev').onclick = () => selTL(tlIdx - 1);
+  document.getElementById('tcard-next').onclick = () => selTL(tlIdx + 1);
+  selTL(0);
+}
+
+function selTL(i) {
+  const TL = D().TL;
+  if (i < 0 || i >= TL.length) return;
+  tlIdx = i;
+  const d = TL[i];
+  document.querySelectorAll('.t-node').forEach((n, j) => n.classList.toggle('active', j === i));
+  document.getElementById('timeline-rail-fill').style.width = (i / (TL.length - 1)) * 100 + '%';
+  document.getElementById('timeline-card').classList.add('active');
+  document.getElementById('tcard-badge').textContent = d.icon;
+  document.getElementById('tcard-title').textContent = d.title;
+  document.getElementById('tcard-desc').textContent = d.desc;
+  document.getElementById('tcard-tags').innerHTML = d.meta.map(m => '<span>' + m + '</span>').join('');
+  document.getElementById('tcard-counter').textContent = (i + 1) + ' / ' + TL.length;
+  document.getElementById('tcard-prev').disabled = i === 0;
+  document.getElementById('tcard-next').disabled = i === TL.length - 1;
+}
+
+/* ---- Demo ---- */
+function renderDemo() {
+  const sl = document.getElementById('demo-steps-list');
+  sl.innerHTML = '';
+  D().DEMO.forEach((s, i) => {
+    const d = document.createElement('div');
+    d.className = 'demo-step-item' + (i === 0 ? ' active' : '');
+    d.innerHTML = '<div class="demo-step-num">' + (i + 1) + '</div><span>' + s.title + '</span>';
+    d.addEventListener('click', () => goDemo(i));
+    sl.appendChild(d);
+  });
+  document.getElementById('demo-back').onclick = () => goDemo(demoIdx - 1);
+  document.getElementById('demo-next').onclick = () => goDemo(demoIdx + 1);
+  renderDemoScreen(0);
+}
+
+function goDemo(i) {
+  const DEMO = D().DEMO;
+  if (i < 0 || i >= DEMO.length) return;
+  demoIdx = i;
+  document.querySelectorAll('.demo-step-item').forEach((el, j) => {
+    el.classList.remove('active', 'done');
+    if (j < i) el.classList.add('done');
+    if (j === i) el.classList.add('active');
+  });
+  document.getElementById('demo-back').disabled = i === 0;
+  document.getElementById('demo-next').disabled = i === DEMO.length - 1;
+  document.getElementById('demo-progress-fill').style.width = (i / (DEMO.length - 1)) * 100 + '%';
+  renderDemoScreen(i);
+}
+
+function renderDemoScreen(i) {
+  const s = D().DEMO[i], el = document.getElementById('demo-screen');
+  el.style.opacity = 0;
+  setTimeout(() => {
+    el.innerHTML = '<h3>' + s.title + '</h3><p>' + s.desc + '</p>' + s.content;
+    el.style.opacity = 1;
+  }, 150);
+}
+
+/* ---- Phases ---- */
+function renderPhases() {
+  const nav = document.getElementById('phases-tabs');
+  nav.innerHTML = '';
+  D().PH.forEach((p, i) => {
+    const b = document.createElement('button');
+    b.className = 'ph-tab' + (i === 0 ? ' active' : '');
+    b.textContent = p.tab;
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.ph-tab').forEach((t, j) => t.classList.toggle('active', j === i));
+      renderPhasePanel(i);
+    });
+    nav.appendChild(b);
+  });
+  renderPhasePanel(0);
+}
+
+function renderPhasePanel(i) {
+  const p = D().PH[i], el = document.getElementById('phase-panel');
+  el.innerHTML = '<div class="ph-header"><span class="ph-icon">' + p.icon + '</span><div class="ph-header-text"><h3>' + p.title + '</h3><p>' + p.sub + '</p></div></div><div class="ph-body"><div class="ph-steps">' + p.steps.map((s, j) => '<div class="ph-step" style="animation:fu .4s ease-out ' + j * .1 + 's both"><div class="ph-num">' + (j + 1) + '</div><div class="ph-text"><h4>' + s.t + '</h4><p>' + s.d + '</p></div></div>').join('') + '</div></div>';
+}
+
+/* ---- Checklist ---- */
+function renderChecklist() {
+  const g = document.getElementById('checklist-col');
+  g.innerHTML = '';
+  const key = 'ckElection_' + currentCountry;
+  const saved = JSON.parse(localStorage.getItem(key) || '[]');
+  D().CK.forEach((c, i) => {
+    const d = document.createElement('div');
+    d.className = 'ck-item' + (saved.includes(i) ? ' checked' : '');
+    d.dataset.i = i;
+    d.innerHTML = '<div class="ck-box"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div><div class="ck-text"><h4>' + c.t + '</h4><p>' + c.d + '</p></div>';
+    d.addEventListener('click', () => {
+      d.classList.toggle('checked');
+      const s = [...document.querySelectorAll('.ck-item.checked')].map(e => +e.dataset.i);
+      localStorage.setItem(key, JSON.stringify(s));
+      updProgress();
+    });
+    g.appendChild(d);
+  });
+  updProgress();
+}
+
+function updProgress() {
+  const t = D().CK.length, c = document.querySelectorAll('.ck-item.checked').length;
+  const p = Math.round(c / t * 100), circ = 2 * Math.PI * 60, off = circ - (p / 100) * circ;
+  const f = document.getElementById('ring-fill');
+  f.style.strokeDashoffset = off;
+  f.style.stroke = p === 100 ? 'var(--grn)' : p >= 50 ? 'var(--ac)' : 'var(--amb)';
+  document.getElementById('ring-label').textContent = p + '%';
+  const msgs = ["Start checking items off your list.", "Great start! Keep going.", "Halfway there! Good progress.", "Almost ready! Just a few more.", "You're fully prepared!"];
+  document.getElementById('readiness-msg').textContent = msgs[p === 100 ? 4 : p >= 75 ? 3 : p >= 50 ? 2 : p > 0 ? 1 : 0];
+}
+
+/* ---- FAQ ---- */
+function renderFAQ() {
+  const cats = document.getElementById('faq-cats');
+  const list = document.getElementById('faq-list');
+  cats.innerHTML = '';
+  list.innerHTML = '';
+  ['all', 'registration', 'voting', 'process', 'results'].forEach(c => {
+    const b = document.createElement('button');
+    b.className = 'fq-btn' + (c === 'all' ? ' active' : '');
+    b.textContent = c[0].toUpperCase() + c.slice(1);
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.fq-btn').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      document.querySelectorAll('.faq-item').forEach(x => x.style.display = (c === 'all' || x.dataset.c === c) ? '' : 'none');
+    });
+    cats.appendChild(b);
+  });
+  D().FAQ.forEach(f => {
+    const d = document.createElement('div');
+    d.className = 'faq-item';
+    d.dataset.c = f.c;
+    d.innerHTML = '<button class="faq-q"><span>' + f.q + '</span><svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><div class="faq-a-inner">' + f.a + '</div></div>';
+    d.querySelector('.faq-q').addEventListener('click', () => d.classList.toggle('open'));
+    list.appendChild(d);
+  });
+}
+
+/* ---- Chat / Assistant ---- */
+function renderChips() {
+  const container = document.getElementById('quick-chips');
+  container.innerHTML = '';
+  D().CHIPS.forEach(ch => {
+    const b = document.createElement('button');
+    b.className = 'chip';
+    b.dataset.q = ch.q;
+    b.textContent = ch.label;
+    b.addEventListener('click', () => {
+      document.getElementById('chat-input').value = ch.q;
+      sendChat();
+    });
+    container.appendChild(b);
+  });
+  // Init chat only once
+  if (!window._chatInit) {
+    window._chatInit = true;
+    const inp = document.getElementById('chat-input');
+    const btn = document.getElementById('chat-send');
+    btn.addEventListener('click', sendChat);
+    inp.addEventListener('keydown', e => { if (e.key === 'Enter') sendChat(); });
+  }
+}
+
+function sendChat() {
+  const inp = document.getElementById('chat-input');
+  const body = document.getElementById('chat-body');
+  const t = inp.value.trim();
+  if (!t) return;
+  addMsg(t, 'user');
+  inp.value = '';
+  const typ = document.createElement('div');
+  typ.className = 'msg msg-bot typing-m';
+  typ.innerHTML = '<div class="msg-avi msg-avi-bot"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 13l2.5 2.5L16 10"/></svg></div><div class="msg-bubble"><div class="typing-ind"><span></span><span></span><span></span></div></div>';
+  body.appendChild(typ);
+  body.scrollTop = body.scrollHeight;
+  setTimeout(() => {
+    typ.remove();
+    addMsg(getAns(t), 'bot');
+  }, 700 + Math.random() * 500);
+}
+
+function addMsg(t, type) {
+  const body = document.getElementById('chat-body');
+  const d = document.createElement('div');
+  d.className = 'msg msg-' + type;
+  const avi = type === 'bot' ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 13l2.5 2.5L16 10"/></svg>' : '\u{1F464}';
+  d.innerHTML = '<div class="msg-avi' + (type === 'bot' ? ' msg-avi-bot' : '') + '">' + avi + '</div><div class="msg-bubble"><p>' + t.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') + '</p></div>';
+  body.appendChild(d);
+  body.scrollTop = body.scrollHeight;
+}
+
+function getAns(q) {
+  const KB = D().KB;
+  const l = q.toLowerCase();
+  if (l.match(/register|registration|sign up|nvsp|form 6|epic|voter id/)) return KB.register;
+  if (l.match(/electoral college|270|elector|lok sabha|parliament|rajya/)) return KB.electoral;
+  if (l.match(/ways to vote|voting method|how to vote|mail|absentee|evm|vvpat|machine/)) return KB.methods;
+  if (l.match(/primary|caucus|primaries|nomination|nominate|nota|none of the above/)) return KB.primaries;
+  if (l.match(/election day|when is|when are|key date|date|schedule/)) return KB.dates;
+  if (l.match(/requirement|run for|qualify|candidate|contest|eligib/)) return KB.candidate;
+  if (l.match(/result|count|winner|certif|government form/)) return KB.results;
+  return KB.fallback;
+}
+
+/* ---- Scroll Reveal ---- */
+function initReveal() {
+  const els = document.querySelectorAll('.section-head,.timeline-card,.phase-panel,.checklist-col,.readiness-card,.faq-list,.chat-container,.ov-card,.demo-wrapper');
+  els.forEach(e => e.classList.add('reveal'));
+  const obs = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: .1, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(e => obs.observe(e));
+}

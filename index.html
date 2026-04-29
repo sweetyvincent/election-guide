@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="country-toggle.css" />
 </head>
 <body>
   <!-- Navbar -->
@@ -20,6 +21,17 @@
         </div>
         <span class="logo-text">ElectionGuide</span>
       </a>
+      <div class="country-toggle" id="country-toggle">
+        <button class="country-btn active" data-country="us" id="btn-us">
+          <span class="country-flag">🇺🇸</span>
+          <span class="country-name">USA</span>
+        </button>
+        <button class="country-btn" data-country="in" id="btn-in">
+          <span class="country-flag">🇮🇳</span>
+          <span class="country-name">India</span>
+        </button>
+        <div class="toggle-slider" id="toggle-slider"></div>
+      </div>
       <ul class="nav-links" id="nav-links">
         <li><a href="#overview" class="nav-link">Overview</a></li>
         <li><a href="#timeline" class="nav-link">Timeline</a></li>
@@ -52,7 +64,7 @@
       <h1 class="hero-title">
         Master the<br/><span class="title-accent">Election Process</span>
       </h1>
-      <p class="hero-desc">From voter registration to inauguration — explore every step of the democratic process through interactive timelines, live simulations, and expert guidance.</p>
+      <p class="hero-desc" id="hero-desc">From voter registration to results day — explore every step of the democratic process through interactive timelines, live simulations, and expert guidance.</p>
       <div class="hero-ctas">
         <a href="#demo" class="btn-hero-primary" id="hero-demo-btn">
           <span>Try Live Demo</span>
@@ -228,12 +240,7 @@
             <div class="msg-bubble">
               <p>Welcome! I'm your Election Process Assistant. Ask me anything about voter registration, election timelines, voting methods, or how results are determined.</p>
               <div class="quick-chips" id="quick-chips">
-                <button class="chip" data-q="How do I register to vote?">📝 Registration</button>
-                <button class="chip" data-q="What are the different ways to vote?">🗳️ Voting Methods</button>
-                <button class="chip" data-q="How does the Electoral College work?">🏛️ Electoral College</button>
-                <button class="chip" data-q="What are primaries and caucuses?">📊 Primaries</button>
-                <button class="chip" data-q="When is election day and what are key dates?">📅 Key Dates</button>
-                <button class="chip" data-q="What are the requirements to run for president?">🎯 Candidate Requirements</button>
+                <!-- JS populated based on country -->
               </div>
             </div>
           </div>
@@ -268,6 +275,8 @@
     </div>
   </footer>
 
+  <script src="data-us.js"></script>
+  <script src="data-india.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
