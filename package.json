@@ -18,6 +18,7 @@
   "homepage": "https://github.com/sweetyvincent/election-guide#readme",
   "description": "",
   "devDependencies": {
-    "jest": "^30.3.0"
+    "jest": "^30.3.0",
+    "jest-environment-jsdom": "^30.3.0"
   }
 }

@@ -1,5 +1,7 @@
 // India Election Data
-const DATA_IN = {
+"use strict";
+
+const DATA_IN_FEDERAL = {
   TL: [
     {id:1,label:"Election\nAnnounced",icon:"\u{1F4E2}",title:"Election Commission Announcement",desc:"The Election Commission of India (ECI) announces election dates and the Model Code of Conduct (MCC) comes into effect. All political parties must adhere to strict guidelines from this point.",meta:["6-8 weeks before polls","MCC in effect"]},
     {id:2,label:"Nomination\nFiling",icon:"\u{1F4DD}",title:"Nomination of Candidates",desc:"Candidates file nomination papers with the Returning Officer. They must submit affidavits declaring criminal records, assets, liabilities, and educational qualifications. A security deposit is required.",meta:["2-3 weeks window","Affidavit required"]},
@@ -84,7 +86,7 @@ const DATA_IN = {
   ],
 
   DEMO: [
-    {title:"Register on NVSP",desc:"First, let's register you as a voter on the National Voter Service Portal.",content:'<div class="demo-visual"><div class="demo-form-group"><label>Full Name (as per Aadhaar)</label><input type="text" placeholder="e.g. Priya Sharma" id="demo-name"></div><div class="demo-form-group"><label>Date of Birth</label><input type="date" id="demo-dob"></div><div class="demo-form-group"><label>State / Union Territory</label><select id="demo-state"><option>Select your state...</option><option>Maharashtra</option><option>Uttar Pradesh</option><option>Tamil Nadu</option><option>Karnataka</option><option>Delhi</option><option>West Bengal</option></select></div></div>'},
+    {title:"Register on NVSP",desc:"First, let's register you as a voter on the National Voter Service Portal.",content:'<div class="demo-visual"><div class="demo-form-group"><label for="demo-name">Full Name (as per Aadhaar)</label><input type="text" placeholder="e.g. Priya Sharma" id="demo-name"></div><div class="demo-form-group"><label for="demo-dob">Date of Birth</label><input type="date" id="demo-dob"></div><div class="demo-form-group"><label for="demo-state">State / Union Territory</label><select id="demo-state"><option>Select your state...</option><option>Maharashtra</option><option>Uttar Pradesh</option><option>Tamil Nadu</option><option>Karnataka</option><option>Delhi</option><option>West Bengal</option></select></div></div>'},
     {title:"Verify Your EPIC",desc:"Your Voter ID (EPIC) application is processed. Let's verify your registration status.",content:'<div class="demo-visual"><div style="text-align:center;padding:20px"><div style="font-size:2.5rem;margin-bottom:12px">\u2705</div><h4 style="margin-bottom:8px">Registration Verified!</h4><p style="color:var(--t2);font-size:.88rem">Your details have been verified by the BLO:</p><div style="text-align:left;margin-top:16px;display:grid;gap:8px"><div class="demo-option selected">\u2714 Indian Citizen - Verified</div><div class="demo-option selected">\u2714 Age 18+ - Verified</div><div class="demo-option selected">\u2714 Address Verified by BLO</div><div class="demo-option selected">\u2714 EPIC Card Number: ABC1234567</div></div></div></div>'},
     {title:"Find Your Polling Booth",desc:"Locate your designated polling booth and check timing details.",content:'<div class="demo-visual"><div style="text-align:center;padding:16px"><div style="font-size:2rem;margin-bottom:12px">\u{1F4CD}</div><h4 style="margin-bottom:12px">Your Polling Booth</h4><div style="text-align:left;display:grid;gap:10px"><div class="demo-option selected">\u{1F3EB} Government Primary School, Ward 5</div><div class="demo-option selected">\u{1F555} Voting Hours: 7:00 AM - 6:00 PM</div><div class="demo-option selected">\u{1F4CB} Booth No: 142 | Part No: 12</div><div class="demo-option selected">\u{1F464} Carry: Voter ID / Aadhaar / Passport</div></div></div></div>'},
     {title:"Understand the EVM",desc:"Learn how the Electronic Voting Machine and VVPAT system works.",content:'<div class="demo-visual"><h4 style="margin-bottom:14px;font-size:.95rem">\u{1F5A5} EVM & VVPAT Guide</h4><div class="demo-option"><strong>Ballot Unit (Left Side)</strong><br><span style="color:var(--t2);font-size:.82rem">Shows candidate names, party symbols, and blue buttons</span></div><div class="demo-option"><strong>Control Unit (With Officer)</strong><br><span style="color:var(--t2);font-size:.82rem">Presiding officer activates ballot for each voter</span></div><div class="demo-option"><strong>VVPAT (Attached to EVM)</strong><br><span style="color:var(--t2);font-size:.82rem">Displays printed slip with your vote for 7 seconds</span></div><div class="demo-option"><strong>NOTA Button</strong><br><span style="color:var(--t2);font-size:.82rem">Last button on ballot unit to reject all candidates</span></div></div>'},
@@ -114,3 +116,70 @@ const DATA_IN = {
 
   heroDesc: "From voter registration to government formation \u2014 explore every step of India's democratic process through interactive timelines, live simulations, and expert guidance."
 };
+
+const DATA_IN_STATE = {
+  TL: [
+    {id:1,label:"Election\nAnnounced",icon:"\u{1F4E2}",title:"State Election Announcement",desc:"The ECI announces the schedule for the Vidhan Sabha (State Assembly) elections. The Model Code of Conduct applies specifically to the state government.",meta:["6-8 weeks before","State MCC"]},
+    {id:2,label:"Nomination",icon:"\u{1F4DD}",title:"Candidate Nomination",desc:"Candidates for MLA (Member of Legislative Assembly) file nominations. Regional parties often play a much larger role compared to national elections.",meta:["Regional Focus","MLA Candidates"]},
+    {id:3,label:"Scrutiny",icon:"\u{1F50D}",title:"Scrutiny & Withdrawal",desc:"Returning Officers verify papers. Withdrawals are processed to finalize the list of candidates contesting for the Assembly seats.",meta:["Finalizing List","Local Seats"]},
+    {id:4,label:"Campaign",icon:"\u{1F4E3}",title:"State Campaigning",desc:"Campaigns focus heavily on state-specific issues: local infrastructure, agriculture, state taxes, and language/cultural identity.",meta:["State Issues","Rallies & Raths"]},
+    {id:5,label:"Polling\nDay",icon:"\u{1F5F3}",title:"Vidhan Sabha Polling",desc:"Voters cast their ballots using EVMs to elect their local MLA. Elections may be held in a single phase for smaller states, or multiple phases for larger ones.",meta:["Electing MLAs","EVM Voting"]},
+    {id:6,label:"Results",icon:"\u{1F4CA}",title:"Vote Counting",desc:"Votes are counted simultaneously across the state. The party or alliance winning a majority of seats in the Vidhan Sabha wins the mandate.",meta:["Counting Day","Majority Needed"]},
+    {id:7,label:"CM Selection",icon:"\u{1F464}",title:"Choosing the Chief Minister",desc:"The newly elected MLAs of the majority party meet to formally elect their legislative party leader, who will become the Chief Minister.",meta:["Legislative Meeting","Leader Chosen"]},
+    {id:8,label:"Government\nFormation",icon:"\u{1F3DB}",title:"State Government Formation",desc:"The Governor of the state invites the leader of the majority party/coalition to take the oath as Chief Minister and form the state cabinet.",meta:["Oath by Governor","State Cabinet"]}
+  ],
+  OV: [
+    {icon:"\u{1F3DB}",title:"Vidhan Sabha",desc:"Electing Members of the Legislative Assembly (MLAs) who make state laws."},
+    {icon:"\u{1F464}",title:"Chief Minister",desc:"The head of the state government, chosen by the majority party in the Assembly."},
+    {icon:"\u{1F3E2}",title:"State Issues",desc:"Elections driven by local infrastructure, state taxes, agriculture, and law & order."},
+    {icon:"\u{1F91D}",title:"Regional Parties",desc:"Regional and state-level political parties often dominate Vidhan Sabha elections."}
+  ],
+  PH: [
+    {tab:"Candidates",icon:"\u{1F4E5}",title:"MLA Nominations",sub:"The local representatives",steps:[{t:"Eligibility",d:"Must be an Indian citizen and at least 25 years old to contest an Assembly seat."},{t:"The Role of an MLA",d:"MLAs represent their local constituency in the Vidhan Sabha and vote on state legislation."}]},
+    {tab:"Campaigns",icon:"\u{1F4E3}",title:"State Campaigns",sub:"Focusing on the grassroots",steps:[{t:"Local Manifestos",d:"Parties release state-specific manifestos promising local development and welfare schemes."},{t:"Language & Culture",d:"Campaigns are often conducted heavily in the local or regional language."}]},
+    {tab:"Polling",icon:"\u{1F5F3}",title:"State Voting Process",sub:"Using the EVM for local seats",steps:[{t:"Same Process, Different Ballot",d:"The voting process is identical to Lok Sabha elections, but the EVM lists local MLA candidates."},{t:"Security",d:"State police and CAPF are deployed to ensure peaceful polling."}]},
+    {tab:"Government",icon:"\u{1F3DB}",title:"Forming the State Govt",sub:"From MLAs to the Chief Minister",steps:[{t:"Majority Rule",d:"A party needs more than 50% of the Assembly seats to form the government."},{t:"The Governor's Role",d:"The Governor (appointed by the President) formally invites the majority leader to become Chief Minister."}]}
+  ],
+  CK: [
+    {t:"Know Your Assembly Constituency",d:"Identify your specific Vidhan Sabha constituency, which is smaller than a Lok Sabha one."},
+    {t:"Research MLA Candidates",d:"Review the track record and affidavits of the candidates running for MLA."},
+    {t:"Check State Manifestos",d:"Read what parties are promising for state-level development."},
+    {t:"Verify Booth Location",d:"Ensure your polling booth hasn't changed since the last election."}
+  ],
+  FAQ: [
+    {q:"What is the difference between Lok Sabha and Vidhan Sabha?",a:"Lok Sabha (National) elects MPs who choose the Prime Minister. Vidhan Sabha (State) elects MLAs who choose the Chief Minister of the state.",c:"process"},
+    {q:"How is a Chief Minister selected?",a:"Voters elect MLAs. The party or coalition with a majority of MLAs selects a leader, who is then appointed Chief Minister by the State Governor.",c:"results"},
+    {q:"What issues are decided at the state level?",a:"States handle law and order (police), public health, state highways, agriculture, and local education policies.",c:"process"},
+    {q:"Can I vote in a different state's election?",a:"No. You can only vote in the state where you are ordinarily resident and registered on the electoral roll.",c:"voting"},
+    {q:"Do state elections happen at the same time as national elections?",a:"Sometimes (Simultaneous Elections), but usually they occur on their own 5-year cycle, separate from the Lok Sabha.",c:"dates"}
+  ],
+  DEMO: [
+    {title:"Review State Candidates",desc:"In state elections, you are voting for a Member of Legislative Assembly (MLA).",content:'<div class="demo-visual"><h4 style="margin-bottom:14px;font-size:.95rem">\u{1F4CB} Vidhan Sabha Ballot Preview</h4><div class="demo-option"><strong>Candidate A</strong><br><span style="color:var(--t2);font-size:.82rem">Regional Party 1 (Symbol: Bicycle)</span></div><div class="demo-option"><strong>Candidate B</strong><br><span style="color:var(--t2);font-size:.82rem">National Party 1 (Symbol: Lotus)</span></div><div class="demo-option"><strong>Candidate C</strong><br><span style="color:var(--t2);font-size:.82rem">National Party 2 (Symbol: Hand)</span></div></div>'},
+    {title:"Simulate Assembly Results",desc:"The party with the majority of MLAs forms the state government.",content:'<div class="demo-result"><div class="result-icon">\u{1F4CA}</div><h4>Simulated Assembly Results</h4><p style="color:var(--t2);font-size:.85rem;margin-bottom:16px">State Assembly (200 Seats Total)</p><div style="text-align:left"><p style="font-size:.88rem;margin-bottom:6px"><strong>Regional Party 1</strong> - 115 seats</p><div class="demo-bar"><div class="demo-bar-fill" style="width:57.5%;background:var(--ac)"></div></div><p style="font-size:.88rem;margin-bottom:6px;margin-top:12px"><strong>National Party 1</strong> - 70 seats</p><div class="demo-bar"><div class="demo-bar-fill" style="width:35%;background:var(--cyn)"></div></div><p style="text-align:center;margin-top:20px;color:var(--grn);font-weight:600">\u2705 Regional Party 1 forms the government.</p></div></div>'}
+  ],
+  KB: {
+    register:"Registration rules are exactly the same as national elections. Ensure you are registered in the specific constituency where you reside.",
+    electoral:"State Assembly (Vidhan Sabha) elections use First-Past-The-Post. You elect an MLA. The party with the majority of MLAs forms the government.",
+    methods:"EVM voting is identical to national elections. You will see candidate names, their party symbols, and the NOTA option.",
+    primaries:"Candidates (MLAs) are selected by party leadership based on local influence, caste arithmetic, and winnability. There are no US-style primaries.",
+    dates:"State elections occur every 5 years, but the cycle depends on the specific state. They are often held at different times than the Lok Sabha elections.",
+    candidate:"To be an MLA, you must be a citizen, at least 25 years old, and a registered voter. You must file an affidavit declaring criminal records and assets.",
+    results:"Votes are counted by the ECI. If a party wins a majority (e.g., 101 out of 200 seats), the Governor invites their leader to be Chief Minister.",
+    fallback:"I can answer questions about State Assembly (Vidhan Sabha) elections, MLAs, Chief Ministers, and how state governments are formed!"
+  },
+  CHIPS: [
+    {label:"\u{1F3DB} Vidhan Sabha", q:"What is the Vidhan Sabha?"},
+    {label:"\u{1F464} Chief Minister", q:"How is the Chief Minister selected?"},
+    {label:"\u{1F4E5} MLA Candidates", q:"What are the rules to become an MLA?"},
+    {label:"\u{1F3E2} State vs National", q:"What is the difference between Lok Sabha and Vidhan Sabha?"}
+  ],
+  heroDesc: "Dive into state politics \u2014 explore how Chief Ministers are chosen and how local assemblies impact governance and daily life in India."
+};
+
+const DATA_IN = {
+  federal: DATA_IN_FEDERAL,
+  state: DATA_IN_STATE
+};
+
+// For backward compatibility during migration
+window.DATA_IN = DATA_IN;

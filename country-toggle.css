@@ -1,12 +1,12 @@
 /* Country Toggle */
-.country-toggle{display:flex;align-items:center;position:relative;background:var(--surf);border:1px solid var(--brd);border-radius:999px;padding:3px;gap:0;margin:0 12px}
-.country-btn{display:flex;align-items:center;gap:6px;padding:7px 16px;border-radius:999px;font-size:.8rem;font-weight:600;color:var(--t3);transition:var(--tr);z-index:2;position:relative;background:transparent;white-space:nowrap}
-.country-btn.active{color:var(--t1)}
+.country-toggle, .level-toggle{display:flex;align-items:center;position:relative;background:var(--surf);border:1px solid var(--brd);border-radius:999px;padding:3px;gap:0;margin:0 12px}
+.country-btn, .level-btn{display:flex;align-items:center;gap:6px;padding:7px 16px;border-radius:999px;font-size:.8rem;font-weight:600;color:var(--t3);transition:var(--tr);z-index:2;position:relative;background:transparent;white-space:nowrap}
+.country-btn.active, .level-btn.active{color:var(--t1)}
 .country-flag{font-size:1.1rem;line-height:1}
 .country-name{font-family:var(--ff)}
-.toggle-slider{position:absolute;top:3px;left:3px;height:calc(100% - 6px);width:calc(50% - 3px);border-radius:999px;background:linear-gradient(135deg,var(--ac),#7c3aed);transition:transform .35s cubic-bezier(.4,0,.2,1);z-index:1;pointer-events:none}
-.toggle-slider.right{transform:translateX(100%)}
-@media(max-width:768px){.country-toggle{margin:0 0 12px;align-self:center;order:-1}.country-name{display:none}.country-btn{padding:7px 12px}}
+.toggle-slider, .level-slider{position:absolute;top:3px;left:3px;height:calc(100% - 6px);width:calc(50% - 3px);border-radius:999px;background:linear-gradient(135deg,var(--ac),#7c3aed);transition:transform .35s cubic-bezier(.4,0,.2,1);z-index:1;pointer-events:none}
+.toggle-slider.right, .level-slider.right{transform:translateX(100%)}
+@media(max-width:768px){.country-toggle, .level-toggle{margin:0 0 12px;align-self:center;order:-1}.country-name{display:none}.country-btn, .level-btn{padding:7px 12px}}
 
 /* India Theme */
 body.india-mode{--ac:#e65100;--ac2:#ff8a65;--acg:rgba(230,81,0,.25)}
